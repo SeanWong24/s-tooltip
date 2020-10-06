@@ -1,3 +1,14 @@
 :host {
-  display: block;
+  display: inline-block;
+  --content-display: none;
+  --tooltip-left: 0;
+  --tooltip-top: 0;
+}
+
+#tooltip-container {
+  z-index: 99999;
+  display: var(--content-display);
+  position: absolute;
+  left: var(--tooltip-left);
+  top: var(--tooltip-top);
 }

@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/s-tooltip.esm.js"></script>
-    <script nomodule src="/build/s-tooltip.js"></script>
-  </head>
-  <body>
-    <s-tooltip></s-tooltip>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/s-tooltip.esm.js"></script>
+  <script nomodule src="/build/s-tooltip.js"></script>
+</head>
+
+<body>
+  <s-tooltip>
+    <img style="width: 50px; height: 50px;"
+      src="http://icons.iconarchive.com/icons/hopstarter/gloss-mac/512/Get-Info-icon.png" />
+    <div slot="tooltip" style="background-color: bisque;">
+      <h1>111</h1>
+      <h2>222</h2>
+      <h3>333</h3>
+    </div>
+  </s-tooltip>
+</body>
+
 </html>
