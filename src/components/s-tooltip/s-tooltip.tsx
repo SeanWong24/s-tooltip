@@ -20,10 +20,10 @@ export class STooltip {
 
   @Element() hostElement: HTMLSTooltipElement;
 
-  @Prop() margin: number = 10;
-  @Prop() position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
-  @Prop() followMouse: boolean = false;
-  @Prop() noDefaultStyle: boolean = false;
+  @Prop({ reflect: true }) margin: number = 10;
+  @Prop({ reflect: true }) position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
+  @Prop({ reflect: true }) followMouse: boolean = false;
+  @Prop({ reflect: true }) noDefaultStyle: boolean = false;
 
   render() {
     return (
