@@ -2,3 +2,11 @@
 
 # STooltip
 A simple tooltip as web component.
+
+Quick import
+```html
+<script type="module" src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.esm.js"></script>
+<script nomodule src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.js"></script>
+```
+
+[Demo](https://seanwong24.github.io/s-tooltip/)
