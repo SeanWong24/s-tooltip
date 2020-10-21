@@ -3,6 +3,13 @@
   --tooltip-display: none;
   --tooltip-left: 0;
   --tooltip-top: 0;
+  --tooltip-arrow-top: none;
+  --tooltip-arrow-right: none;
+  --tooltip-arrow-bottom: none;
+  --tooltip-arrow-left: none;
+  --tooltip-arrow-margin-top: none;
+  --tooltip-arrow-margin-left: none;
+  --tooltip-arrow-border-color: none;
 }
 
 #tooltip-container {
@@ -19,4 +26,18 @@
   border-radius: 10px;
   padding: 10px;
   color: white;
+}
+
+#tooltip-container.styled:after {
+  content: "";
+  position: absolute;
+  top: var(--tooltip-arrow-top);
+  right: var(--tooltip-arrow-right);
+  bottom: var(--tooltip-arrow-bottom);
+  left: var(--tooltip-arrow-left);
+  margin-top: var(--tooltip-arrow-margin-top);
+  margin-left: var(--tooltip-arrow-margin-left);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--tooltip-arrow-border-color);
 }

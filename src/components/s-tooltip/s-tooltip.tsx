@@ -89,18 +89,34 @@ export class STooltip {
       case 'top':
         tooltipLeft = x - tooltipWidth / 2;
         tooltipTop = y - tooltipHeight - this.margin;
+        this.hostElement.style.setProperty('--tooltip-arrow-top', `100%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-left', `50%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-margin-left', `-5px`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `rgba(0, 0, 0, .7) transparent transparent transparent`);
         break;
       case 'right':
         tooltipLeft = x + this.margin;
         tooltipTop = y - tooltipHeight / 2;
+        this.hostElement.style.setProperty('--tooltip-arrow-top', `50%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-right', `100%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-margin-top', `-5px`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent rgba(0, 0, 0, .7) transparent transparent`);
         break;
       case 'bottom':
         tooltipLeft = x - tooltipWidth / 2;
         tooltipTop = y + this.margin;
+        this.hostElement.style.setProperty('--tooltip-arrow-bottom', `100%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-left', `50%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-margin-left', `-5px`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent rgba(0, 0, 0, .7) transparent`);
         break;
       case 'left':
         tooltipLeft = x - tooltipWidth - this.margin;
         tooltipTop = y - tooltipHeight / 2;
+        this.hostElement.style.setProperty('--tooltip-arrow-top', `50%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-left', `100%`);
+        this.hostElement.style.setProperty('--tooltip-arrow-margin-top', `-5px`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent transparent rgba(0, 0, 0, .7)`);
         break;
     }
 
