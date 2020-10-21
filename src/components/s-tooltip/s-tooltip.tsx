@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 's-tooltip',
@@ -24,6 +24,15 @@ export class STooltip {
   @Prop({ reflect: true }) position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
+  @Prop({ reflect: true }) backgroundColor: string = 'rgba(0, 0, 0, .7)';
+
+  @Watch('backgroundColor') updateBackgroundColor(value: string) {
+    this.hostElement.style.setProperty('--tooltip-background-color', value);
+  }
+
+  connectedCallback() {
+    this.updateBackgroundColor(this.backgroundColor);
+  }
 
   render() {
     return (
@@ -92,7 +101,7 @@ export class STooltip {
         this.hostElement.style.setProperty('--tooltip-arrow-top', `100%`);
         this.hostElement.style.setProperty('--tooltip-arrow-left', `50%`);
         this.hostElement.style.setProperty('--tooltip-arrow-margin-left', `-5px`);
-        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `rgba(0, 0, 0, .7) transparent transparent transparent`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `${this.backgroundColor} transparent transparent transparent`);
         break;
       case 'right':
         tooltipLeft = x + this.margin;
@@ -100,7 +109,7 @@ export class STooltip {
         this.hostElement.style.setProperty('--tooltip-arrow-top', `50%`);
         this.hostElement.style.setProperty('--tooltip-arrow-right', `100%`);
         this.hostElement.style.setProperty('--tooltip-arrow-margin-top', `-5px`);
-        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent rgba(0, 0, 0, .7) transparent transparent`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent ${this.backgroundColor} transparent transparent`);
         break;
       case 'bottom':
         tooltipLeft = x - tooltipWidth / 2;
@@ -108,7 +117,7 @@ export class STooltip {
         this.hostElement.style.setProperty('--tooltip-arrow-bottom', `100%`);
         this.hostElement.style.setProperty('--tooltip-arrow-left', `50%`);
         this.hostElement.style.setProperty('--tooltip-arrow-margin-left', `-5px`);
-        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent rgba(0, 0, 0, .7) transparent`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent ${this.backgroundColor} transparent`);
         break;
       case 'left':
         tooltipLeft = x - tooltipWidth - this.margin;
@@ -116,7 +125,7 @@ export class STooltip {
         this.hostElement.style.setProperty('--tooltip-arrow-top', `50%`);
         this.hostElement.style.setProperty('--tooltip-arrow-left', `100%`);
         this.hostElement.style.setProperty('--tooltip-arrow-margin-top', `-5px`);
-        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent transparent rgba(0, 0, 0, .7)`);
+        this.hostElement.style.setProperty('--tooltip-arrow-border-color', `transparent transparent transparent ${this.backgroundColor}`);
         break;
     }
 
