@@ -22,6 +22,7 @@ export class STooltip {
 
   @Prop() margin: number = 10;
   @Prop() position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
+  @Prop() followMouse: boolean = false;
 
   render() {
     return (
@@ -30,9 +31,7 @@ export class STooltip {
           id="content-container"
           onMouseOver={() => this.isTooltipEnabled = true}
           onMouseOut={() => this.isTooltipEnabled = false}
-          onMouseMove={event => {
-            this.setTooltipPosition(event.x, event.y)
-          }}
+          onMouseMove={event => this.updateTooltipPosition(event)}
         >
           <slot></slot>
         </div>
@@ -41,6 +40,37 @@ export class STooltip {
         </div>
       </Host>
     );
+  }
+
+  private updateTooltipPosition(mouseEvent: MouseEvent) {
+    let x = 0, y = 0;
+    if (this.followMouse) {
+      x = mouseEvent.x;
+      y = mouseEvent.y;
+    } else {
+      const tooltipContainerElement = this.hostElement.shadowRoot.querySelector('#content-container');
+      const { top, right, bottom, left, width, height } = tooltipContainerElement.getBoundingClientRect();
+
+      switch (this.position) {
+        case 'top':
+          x = right - width / 2;
+          y = top;
+          break;
+        case 'right':
+          x = right;
+          y = bottom - height / 2;
+          break;
+        case 'bottom':
+          x = right - width / 2;
+          y = bottom;
+          break;
+        case 'left':
+          x = left;
+          y = bottom - height / 2;
+          break;
+      }
+    }
+    this.setTooltipPosition(x, y);
   }
 
   private setTooltipPosition(x: number, y: number) {

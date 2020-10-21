@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface STooltip {
+        "followMouse": boolean;
         "margin": number;
         "position": 'top' | 'right' | 'bottom' | 'left';
     }
@@ -24,6 +25,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface STooltip {
+        "followMouse"?: boolean;
         "margin"?: number;
         "position"?: 'top' | 'right' | 'bottom' | 'left';
     }
