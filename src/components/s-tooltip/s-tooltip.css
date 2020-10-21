@@ -1,4 +1,5 @@
 :host {
+  all: initial;
   display: inline-block;
   --tooltip-display: none;
   --tooltip-left: 0;
