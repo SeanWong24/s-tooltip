@@ -10,6 +10,8 @@ export namespace Components {
         "backgroundColor": string;
         "followMouse": boolean;
         "margin": number;
+        "maxHeight": string;
+        "maxWidth": string;
         "noDefaultStyle": boolean;
         "position": 'top' | 'right' | 'bottom' | 'left';
     }
@@ -30,6 +32,8 @@ declare namespace LocalJSX {
         "backgroundColor"?: string;
         "followMouse"?: boolean;
         "margin"?: number;
+        "maxHeight"?: string;
+        "maxWidth"?: string;
         "noDefaultStyle"?: boolean;
         "position"?: 'top' | 'right' | 'bottom' | 'left';
     }

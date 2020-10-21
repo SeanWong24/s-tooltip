@@ -25,13 +25,23 @@ export class STooltip {
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) backgroundColor: string = 'rgba(0, 0, 0, .7)';
+  @Prop({ reflect: true }) maxWidth: string = '500px';
+  @Prop({ reflect: true }) maxHeight: string = '300px';
 
   @Watch('backgroundColor') updateBackgroundColor(value: string) {
     this.hostElement.style.setProperty('--tooltip-background-color', value);
   }
+  @Watch('maxWidth') updateMaxWidth(value: string) {
+    this.hostElement.style.setProperty('--tooltip-max-width', value);
+  }
+  @Watch('maxHeight') updateMaxHeight(value: string) {
+    this.hostElement.style.setProperty('--tooltip-max-height', value);
+  }
 
   connectedCallback() {
     this.updateBackgroundColor(this.backgroundColor);
+    this.updateMaxWidth(this.maxWidth);
+    this.updateMaxHeight(this.maxHeight);
   }
 
   render() {

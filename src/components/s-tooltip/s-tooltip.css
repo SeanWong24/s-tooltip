@@ -11,6 +11,8 @@
   --tooltip-arrow-margin-left: none;
   --tooltip-arrow-border-color: none;
   --tooltip-background-color: none;
+  --tooltip-max-width: none;
+  --tooltip-max-height: none;
 }
 
 #tooltip-container {
@@ -27,6 +29,8 @@
   border-radius: 10px;
   padding: 10px;
   color: white;
+  max-width: var(--tooltip-max-width);
+  max-height: var(--tooltip-max-height);
 }
 
 #tooltip-container.styled:after {
