@@ -7,8 +7,9 @@
 
 #tooltip-container {
   z-index: 99999;
+  pointer-events: none;
   display: var(--content-display);
-  position: absolute;
+  position: fixed;
   left: var(--tooltip-left);
   top: var(--tooltip-top);
 }

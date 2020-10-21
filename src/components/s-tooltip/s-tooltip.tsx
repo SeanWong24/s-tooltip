@@ -1,4 +1,4 @@
-import { Component, Host, h, Element } from '@stencil/core';
+import { Component, Host, h, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 's-tooltip',
@@ -7,6 +7,17 @@ import { Component, Host, h, Element } from '@stencil/core';
 })
 export class STooltip {
 
+  private _isTooltipEnabled = false;
+  private get isTooltipEnabled() {
+    return this._isTooltipEnabled;
+  }
+  private set isTooltipEnabled(value: boolean) {
+    if (value !== this._isTooltipEnabled) {
+      this._isTooltipEnabled = value;
+      this.hostElement.style.setProperty('--content-display', value ? 'block' : 'none');
+    }
+  }
+
   @Element() hostElement: HTMLSTooltipElement;
 
   render() {
@@ -14,11 +25,12 @@ export class STooltip {
       <Host>
         <div
           id="content-container"
-          onMouseOver={event => {
-            this.toggleContent(true);
-            this.setContentPosition(event.x, event.y);
+          onMouseOver={() => this.isTooltipEnabled = true}
+          onMouseOut={() => this.isTooltipEnabled = false}
+          onMouseMove={event => {
+            debugger
+            this.setContentPosition(event.x, event.y)
           }}
-          onMouseOut={() => this.toggleContent(false)}
         >
           <slot></slot>
         </div>
@@ -27,10 +39,6 @@ export class STooltip {
         </div>
       </Host >
     );
-  }
-
-  private toggleContent(displayed: boolean) {
-    this.hostElement.style.setProperty('--content-display', displayed ? 'block' : 'none');
   }
 
   private setContentPosition(left: number, top: number) {
