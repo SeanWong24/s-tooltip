@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface STooltip {
+        "margin": number;
+        "position": 'top' | 'right' | 'bottom' | 'left';
     }
 }
 declare global {
@@ -22,6 +24,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface STooltip {
+        "margin"?: number;
+        "position"?: 'top' | 'right' | 'bottom' | 'left';
     }
     interface IntrinsicElements {
         "s-tooltip": STooltip;
