@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type                                     | Default    |
-| ------------- | -------------- | ----------- | ---------------------------------------- | ---------- |
-| `followMouse` | `follow-mouse` |             | `boolean`                                | `false`    |
-| `margin`      | `margin`       |             | `number`                                 | `10`       |
-| `position`    | `position`     |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
+| Property         | Attribute          | Description | Type                                     | Default    |
+| ---------------- | ------------------ | ----------- | ---------------------------------------- | ---------- |
+| `followMouse`    | `follow-mouse`     |             | `boolean`                                | `false`    |
+| `margin`         | `margin`           |             | `number`                                 | `10`       |
+| `noDefaultStyle` | `no-default-style` |             | `boolean`                                | `false`    |
+| `position`       | `position`         |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
 
 
 ----------------------------------------------

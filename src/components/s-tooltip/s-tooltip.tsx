@@ -23,6 +23,7 @@ export class STooltip {
   @Prop() margin: number = 10;
   @Prop() position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
   @Prop() followMouse: boolean = false;
+  @Prop() noDefaultStyle: boolean = false;
 
   render() {
     return (
@@ -35,7 +36,10 @@ export class STooltip {
         >
           <slot></slot>
         </div>
-        <div id="tooltip-container">
+        <div
+          id="tooltip-container"
+          class={this.noDefaultStyle ? null : 'styled'}
+        >
           <slot name="tooltip"></slot>
         </div>
       </Host>

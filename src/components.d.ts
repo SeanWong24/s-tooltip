@@ -9,6 +9,7 @@ export namespace Components {
     interface STooltip {
         "followMouse": boolean;
         "margin": number;
+        "noDefaultStyle": boolean;
         "position": 'top' | 'right' | 'bottom' | 'left';
     }
 }
@@ -27,6 +28,7 @@ declare namespace LocalJSX {
     interface STooltip {
         "followMouse"?: boolean;
         "margin"?: number;
+        "noDefaultStyle"?: boolean;
         "position"?: 'top' | 'right' | 'bottom' | 'left';
     }
     interface IntrinsicElements {
