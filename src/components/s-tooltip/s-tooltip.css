@@ -3,16 +3,16 @@
   --tooltip-display: none;
   --tooltip-left: 0;
   --tooltip-top: 0;
-  --tooltip-arrow-top: none;
-  --tooltip-arrow-right: none;
-  --tooltip-arrow-bottom: none;
-  --tooltip-arrow-left: none;
-  --tooltip-arrow-margin-top: none;
-  --tooltip-arrow-margin-left: none;
-  --tooltip-arrow-border-color: none;
-  --tooltip-background-color: none;
-  --tooltip-max-width: none;
-  --tooltip-max-height: none;
+  --tooltip-arrow-top: unset;
+  --tooltip-arrow-right: unset;
+  --tooltip-arrow-bottom: unset;
+  --tooltip-arrow-left: unset;
+  --tooltip-arrow-margin-top: unset;
+  --tooltip-arrow-margin-left: unset;
+  --tooltip-arrow-border-color: unset;
+  --tooltip-background-color: unset;
+  --tooltip-max-width: unset;
+  --tooltip-max-height: unset;
 }
 
 #tooltip-container {
