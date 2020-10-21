@@ -14,7 +14,7 @@ export class STooltip {
   private set isTooltipEnabled(value: boolean) {
     if (value !== this._isTooltipEnabled) {
       this._isTooltipEnabled = value;
-      this.hostElement.style.setProperty('--content-display', value ? 'block' : 'none');
+      this.hostElement.style.setProperty('--tooltip-display', value ? 'block' : 'none');
     }
   }
 
@@ -39,7 +39,7 @@ export class STooltip {
         <div id="tooltip-container">
           <slot name="tooltip"></slot>
         </div>
-      </Host >
+      </Host>
     );
   }
 
