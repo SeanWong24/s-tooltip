@@ -39,6 +39,11 @@ export class STooltip {
   }
 
   connectedCallback() {
+    const parentElement = this.hostElement.parentElement;
+    parentElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
+    parentElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
+    parentElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
+
     this.updateBackgroundColor(this.backgroundColor);
     this.updateMaxWidth(this.maxWidth);
     this.updateMaxHeight(this.maxHeight);
@@ -48,18 +53,10 @@ export class STooltip {
     return (
       <Host>
         <div
-          id="content-container"
-          onMouseOver={() => this.isTooltipEnabled = true}
-          onMouseOut={() => this.isTooltipEnabled = false}
-          onMouseMove={event => this.updateTooltipPosition(event)}
-        >
-          <slot></slot>
-        </div>
-        <div
           id="tooltip-container"
           class={this.noDefaultStyle ? null : 'styled'}
         >
-          <slot name="tooltip"></slot>
+          <slot></slot>
         </div>
       </Host>
     );
@@ -71,8 +68,8 @@ export class STooltip {
       x = mouseEvent.x;
       y = mouseEvent.y;
     } else {
-      const tooltipContainerElement = this.hostElement.shadowRoot.querySelector('#content-container');
-      const { top, right, bottom, left, width, height } = tooltipContainerElement.getBoundingClientRect();
+      const parentElement = this.hostElement.parentElement;
+      const { top, right, bottom, left, width, height } = parentElement.getBoundingClientRect();
 
       switch (this.position) {
         case 'top':
