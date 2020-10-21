@@ -10,6 +10,8 @@
   --tooltip-arrow-margin-top: unset;
   --tooltip-arrow-margin-left: unset;
   --tooltip-arrow-border-color: unset;
+  --tooltip-border-width: unset;
+  --tooltip-border-color: unset;
   --tooltip-background-color: unset;
   --tooltip-max-width: unset;
   --tooltip-max-height: unset;
@@ -31,6 +33,9 @@
   color: white;
   max-width: var(--tooltip-max-width);
   max-height: var(--tooltip-max-height);
+  border-style: solid;
+  border-width: var(--tooltip-border-width);
+  border-color: var(--tooltip-border-color)
 }
 
 #tooltip-container.styled:after {
@@ -42,7 +47,7 @@
   left: var(--tooltip-arrow-left);
   margin-top: var(--tooltip-arrow-margin-top);
   margin-left: var(--tooltip-arrow-margin-left);
-  border-width: 6px;
+  border-width: 10px;
   border-style: solid;
   border-color: var(--tooltip-arrow-border-color);
 }
