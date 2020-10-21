@@ -31,7 +31,7 @@ export class STooltip {
           onMouseOver={() => this.isTooltipEnabled = true}
           onMouseOut={() => this.isTooltipEnabled = false}
           onMouseMove={event => {
-            this.setContentPosition(event.x, event.y)
+            this.setTooltipPosition(event.x, event.y)
           }}
         >
           <slot></slot>
@@ -43,30 +43,30 @@ export class STooltip {
     );
   }
 
-  private setContentPosition(left: number, top: number) {
+  private setTooltipPosition(x: number, y: number) {
     const tooltipContainerElement = this.hostElement.shadowRoot.querySelector('#tooltip-container');
     const tooltipWidth = tooltipContainerElement.clientWidth;
     const tooltipHeight = tooltipContainerElement.clientHeight;
 
-    let tooltipLeft = left;
-    let tooltipTop = top;
+    let tooltipLeft = x;
+    let tooltipTop = y;
 
     switch (this.position) {
       case 'top':
-        tooltipLeft = left - tooltipWidth / 2;
-        tooltipTop = top - tooltipHeight - this.margin;
+        tooltipLeft = x - tooltipWidth / 2;
+        tooltipTop = y - tooltipHeight - this.margin;
         break;
       case 'right':
-        tooltipLeft = left + this.margin;
-        tooltipTop = top - tooltipHeight / 2;
+        tooltipLeft = x + this.margin;
+        tooltipTop = y - tooltipHeight / 2;
         break;
       case 'bottom':
-        tooltipLeft = left - tooltipWidth / 2;
-        tooltipTop = top + this.margin;
+        tooltipLeft = x - tooltipWidth / 2;
+        tooltipTop = y + this.margin;
         break;
       case 'left':
-        tooltipLeft = left - tooltipWidth - this.margin;
-        tooltipTop = top - tooltipHeight / 2;
+        tooltipLeft = x - tooltipWidth - this.margin;
+        tooltipTop = y - tooltipHeight / 2;
         break;
     }
 
