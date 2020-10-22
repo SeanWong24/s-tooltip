@@ -18,7 +18,7 @@
 | `maxWidth`        | `max-width`        |             | `string`                                 | `'500px'`  |
 | `noDefaultStyle`  | `no-default-style` |             | `boolean`                                | `false`    |
 | `opacity`         | `opacity`          |             | `number`                                 | `.8`       |
-| `position`        | `position`         |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
+| `orientation`     | `orientation`      |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
 
 
 ----------------------------------------------

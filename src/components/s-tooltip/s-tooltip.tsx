@@ -21,7 +21,7 @@ export class STooltip {
   @Element() hostElement: HTMLSTooltipElement;
 
   @Prop({ reflect: true }) margin: number = 10;
-  @Prop({ reflect: true }) position: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
+  @Prop({ reflect: true }) orientation: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) backgroundColor: string = 'black';
@@ -70,7 +70,7 @@ export class STooltip {
         <div
           id="tooltip-container"
           class={[
-            this.position,
+            this.orientation,
             this.noDefaultStyle ? '' : 'styled'
           ].join(' ')}
         >
@@ -89,7 +89,7 @@ export class STooltip {
       const parentElement = this.hostElement.parentElement;
       const { top, right, bottom, left, width, height } = parentElement.getBoundingClientRect();
 
-      switch (this.position) {
+      switch (this.orientation) {
         case 'top':
           x = right - width / 2;
           y = top;
@@ -119,7 +119,7 @@ export class STooltip {
     let tooltipLeft = x;
     let tooltipTop = y;
 
-    switch (this.position) {
+    switch (this.orientation) {
       case 'top':
         tooltipLeft = x - tooltipWidth / 2;
         tooltipTop = y - tooltipHeight - this.margin;
