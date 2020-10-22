@@ -12,6 +12,7 @@
   --tooltip-background-color: unset;
   --tooltip-max-width: unset;
   --tooltip-max-height: unset;
+  --tooltip-opacity: unset;
 }
 
 #tooltip-container {
@@ -21,6 +22,7 @@
   position: fixed;
   left: var(--tooltip-left);
   top: var(--tooltip-top);
+  opacity: var(--tooltip-opacity);
 }
 
 #tooltip-container.styled {

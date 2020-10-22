@@ -29,6 +29,7 @@ export class STooltip {
   @Prop({ reflect: true }) maxHeight: string = '300px';
   @Prop({ reflect: true }) borderWidth: string = '0px';
   @Prop({ reflect: true }) borderColor: string = 'white';
+  @Prop({ reflect: true }) opacity: number = .8;
 
   @Watch('backgroundColor') updateBackgroundColor(value: string) {
     this.hostElement.style.setProperty('--tooltip-background-color', value);
@@ -45,6 +46,9 @@ export class STooltip {
   @Watch('borderColor') updateBorderColor(value: string) {
     this.hostElement.style.setProperty('--tooltip-border-color', value);
   }
+  @Watch('opacity') updateOpacity(value: number) {
+    this.hostElement.style.setProperty('--tooltip-opacity', value.toString());
+  }
 
   connectedCallback() {
     const parentElement = this.hostElement.parentElement;
@@ -57,6 +61,7 @@ export class STooltip {
     this.updateMaxHeight(this.maxHeight);
     this.updateBorderWidth(this.borderWidth);
     this.updateBorderColor(this.borderColor);
+    this.updateOpacity(this.opacity);
   }
 
   render() {

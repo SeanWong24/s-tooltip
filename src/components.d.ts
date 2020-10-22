@@ -15,6 +15,7 @@ export namespace Components {
         "maxHeight": string;
         "maxWidth": string;
         "noDefaultStyle": boolean;
+        "opacity": number;
         "position": 'top' | 'right' | 'bottom' | 'left';
     }
 }
@@ -39,6 +40,7 @@ declare namespace LocalJSX {
         "maxHeight"?: string;
         "maxWidth"?: string;
         "noDefaultStyle"?: boolean;
+        "opacity"?: number;
         "position"?: 'top' | 'right' | 'bottom' | 'left';
     }
     interface IntrinsicElements {
