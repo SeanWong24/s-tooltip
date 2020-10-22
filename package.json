@@ -26,5 +26,9 @@
   "dependencies": {
     "@stencil/core": "^2.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanWong24/s-tooltip.git"
+  }
 }
