@@ -5,18 +5,67 @@ An easy-to-use tooltip web component for any framework or pure JS.
 
 # How to install
 ## Pure JS
-### Import in html
+### Quick import
 ```html
 <script type="module" src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.esm.js"></script>
 <script nomodule src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.js"></script>
 ```
+### To get a local copy
+First, [install using NPM](#use-npm-to-get-a-local-copy).  
+The JS files for importing are located at:  
+For ES6 module:
+```
+node_modules/s-tooltip/dist/s-tooltip/s-tooltip.esm.js
+```
+For ES5:
+```
+node_modules/s-tooltip/dist/s-tooltip/s-tooltip.js
+```
+## Angular
+### Use loader
+First [install using NPM](#use-npm-to-get-a-local-copy).  
+Then include ```CUSTOM_ELEMENTS_SCHEMA``` in any module that uses ```s-tooltip```. For example, in ```AppModule```
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule],
+  bootstrap: [AppComponent],
+  // add this
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+After that, in ```main.js```
+```ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+import { applyPolyfills, defineCustomElements } from 'test-components/loader';
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));
+
+applyPolyfills().then(() => {
+  defineCustomElements()
+});
+```
 ## React
 ### Use loader
-First install using NPM.
-```sh
-npm i https://github.com/SeanWong24/s-tooltip.git#v0.6.0
-```
-Then in index.js
+First [install using NPM](#use-npm-to-get-a-local-copy).  
+Then in ```index.js```
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -35,6 +84,35 @@ applyPolyfills().then(() => {
   defineCustomElements();
 });
 ```
+## Vue
+### Use loader
+First [install using NPM](#use-npm-to-get-a-local-copy).
+Then in ```main.js```
+```js
+import Vue from 'vue';
+import App from './App.vue';
+
+import { applyPolyfills, defineCustomElements } from 'test-components/loader';
+
+Vue.config.productionTip = false;
+
+// add this
+Vue.config.ignoredElements = ['s-tooltip'];
+
+// and add this
+applyPolyfills().then(() => {
+  defineCustomElements();
+});
+
+new Vue({
+  render: h => h(App)
+}).$mount('#app');
+```
+## Use NPM to get a local copy
+```sh
+npm i https://github.com/SeanWong24/s-tooltip.git#v0.0.0
+```
+Replace ```v0.0.0``` with the actual version
 
 # How to use
 ## Examples
