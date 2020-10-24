@@ -33,8 +33,8 @@ Also, the tooltip content can be html elements.
 ## Pure JS
 ### Quick import
 ```html
-<script type="module" src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.esm.js"></script>
-<script nomodule src="https://seanwong24.github.io/s-tooltip/build/s-tooltip.js"></script>
+<script type="module" src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.esm.js"></script>
+<script nomodule src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
 ```
 ### Script tag
 First, [install using NPM](#use-npm-to-get-a-local-copy).  
@@ -150,9 +150,8 @@ new Vue({
 ```
 ## Use NPM to get a local copy
 ```sh
-npm i https://github.com/SeanWong24/s-tooltip.git#v0.0.0
+npm i @seanwong24/s-tooltip
 ```
-Replace ```v0.0.0``` with the actual version
 
 # Properties & attibutes
 [See here](./src/components/s-tooltip/readme.md)
