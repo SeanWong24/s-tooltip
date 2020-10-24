@@ -16,6 +16,7 @@
 | `margin`          | `margin`           |             | `number`                                 | `10`       |
 | `maxHeight`       | `max-height`       |             | `string`                                 | `'300px'`  |
 | `maxWidth`        | `max-width`        |             | `string`                                 | `'500px'`  |
+| `noArrow`         | `no-arrow`         |             | `boolean`                                | `false`    |
 | `noDefaultStyle`  | `no-default-style` |             | `boolean`                                | `false`    |
 | `opacity`         | `opacity`          |             | `number`                                 | `.8`       |
 | `orientation`     | `orientation`      |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |

@@ -39,8 +39,8 @@
 
 
 
-#tooltip-container.styled:before, 
-#tooltip-container.styled:after {
+#tooltip-container.styled.arrow:before, 
+#tooltip-container.styled.arrow:after {
   content: "";
   width: 0;
   height: 0;
@@ -48,7 +48,7 @@
   border-style: solid;
 }
 
-#tooltip-container.styled.top:before {
+#tooltip-container.styled.arrow.top:before {
   border-left-width: 10px;
   border-left-color: transparent;
   border-right-width: 10px;
@@ -63,7 +63,7 @@
   border-top-color: var(--tooltip-border-color);
 }
 
-#tooltip-container.styled.top:after {
+#tooltip-container.styled.arrow.top:after {
   border-left-width: calc(10px - var(--tooltip-border-width));
   border-left-color: transparent;
   border-right-width: calc(10px - var(--tooltip-border-width));
@@ -78,7 +78,7 @@
   border-top-width: calc(10px - var(--tooltip-border-width) * 2);
 }
 
-#tooltip-container.styled.bottom:before {
+#tooltip-container.styled.arrow.bottom:before {
   border-left-width: 10px;
   border-left-color: transparent;
   border-right-width: 10px;
@@ -93,7 +93,7 @@
   border-bottom-color: var(--tooltip-border-color);
 }
 
-#tooltip-container.styled.bottom:after {
+#tooltip-container.styled.arrow.bottom:after {
   border-left-width: calc(10px - var(--tooltip-border-width));
   border-left-color: transparent;
   border-right-width: calc(10px - var(--tooltip-border-width));
@@ -108,7 +108,7 @@
   border-bottom-width: calc(10px - var(--tooltip-border-width) * 2);
 }
 
-#tooltip-container.styled.left:before {
+#tooltip-container.styled.arrow.left:before {
   border-top-width: 10px;
   border-top-color: transparent;
   border-bottom-width: 10px;
@@ -123,7 +123,7 @@
   border-left-color: var(--tooltip-border-color);
 }
 
-#tooltip-container.styled.left:after {
+#tooltip-container.styled.arrow.left:after {
   border-top-width: calc(10px - var(--tooltip-border-width));
   border-top-color: transparent;
   border-bottom-width: calc(10px - var(--tooltip-border-width));
@@ -138,7 +138,7 @@
   border-left-width: calc(10px - var(--tooltip-border-width) * 2);
 }
 
-#tooltip-container.styled.right:before {
+#tooltip-container.styled.arrow.right:before {
   border-top-width: 10px;
   border-top-color: transparent;
   border-bottom-width: 10px;
@@ -153,7 +153,7 @@
   border-right-color: var(--tooltip-border-color);
 }
 
-#tooltip-container.styled.right:after {
+#tooltip-container.styled.arrow.right:after {
   border-top-width: calc(10px - var(--tooltip-border-width));
   border-top-color: transparent;
   border-bottom-width: calc(10px - var(--tooltip-border-width));

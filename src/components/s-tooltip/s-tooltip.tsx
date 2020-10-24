@@ -24,6 +24,7 @@ export class STooltip {
   @Prop({ reflect: true }) orientation: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
+  @Prop({ reflect: true }) noArrow: boolean = false;
   @Prop({ reflect: true }) backgroundColor: string = 'black';
   @Prop({ reflect: true }) maxWidth: string = '500px';
   @Prop({ reflect: true }) maxHeight: string = '300px';
@@ -71,7 +72,8 @@ export class STooltip {
           id="tooltip-container"
           class={[
             this.orientation,
-            this.noDefaultStyle ? '' : 'styled'
+            this.noDefaultStyle ? '' : 'styled',
+            this.noArrow ? '' : 'arrow'
           ].join(' ')}
         >
           <slot></slot>

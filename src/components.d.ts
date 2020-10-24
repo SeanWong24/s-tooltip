@@ -14,6 +14,7 @@ export namespace Components {
         "margin": number;
         "maxHeight": string;
         "maxWidth": string;
+        "noArrow": boolean;
         "noDefaultStyle": boolean;
         "opacity": number;
         "orientation": 'top' | 'right' | 'bottom' | 'left';
@@ -39,6 +40,7 @@ declare namespace LocalJSX {
         "margin"?: number;
         "maxHeight"?: string;
         "maxWidth"?: string;
+        "noArrow"?: boolean;
         "noDefaultStyle"?: boolean;
         "opacity"?: number;
         "orientation"?: 'top' | 'right' | 'bottom' | 'left';
