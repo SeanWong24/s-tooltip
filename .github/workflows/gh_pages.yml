@@ -18,7 +18,10 @@ jobs:
 
       - name: Build
         run: |
+          mv stencil.config.gh-pages.ts stencil.config.ts
+          mv package.gh-pages.json package.json
           npm install
+          npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
