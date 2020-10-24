@@ -28,5 +28,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SeanWong24/s-tooltip.git"
-  }
+  },
+  "keywords": [
+    "tooltip",
+    "angular",
+    "react",
+    "vue",
+    "js"
+  ]
 }
