@@ -41,15 +41,15 @@ First, [install using NPM](#use-npm-to-get-a-local-copy).
 Then in the html
 ```html
 <!-- for ES6 -->
-<script type="module" src="node_modules/s-tooltip/dist/s-tooltip/s-tooltip.esm.js"></script>
+<script type="module" src="node_modules/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.esm.js"></script>
 <!-- for ES5 -->
-<script nomodule src="node_modules/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
+<script nomodule src="node_modules/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
 ```
 ### Import statement
 First, [install using NPM](#use-npm-to-get-a-local-copy).  
 Then in JS file
 ```js
-import { applyPolyfills, defineCustomElements } from "node_modules/s-tooltip/loader/index.js";
+import { applyPolyfills, defineCustomElements } from "node_modules/@seanwong24/s-tooltip/loader/index.js";
 applyPolyfills().then(() => {
   defineCustomElements();
 });
@@ -79,7 +79,7 @@ import { AppComponent } from './app.component';
 })
 export class AppModule {}
 ```
-After that, in ```main.js```
+After that, in ```main.ts```
 ```ts
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -88,7 +88,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 // add this
-import { applyPolyfills, defineCustomElements } from 's-tooltip/loader';
+import { applyPolyfills, defineCustomElements } from '@seanwong24/s-tooltip/loader';
 
 if (environment.production) {
   enableProdMode();
@@ -114,7 +114,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 // add this
-import { applyPolyfills, defineCustomElements } from "s-tooltip/loader";
+import { applyPolyfills, defineCustomElements } from "@seanwong24/s-tooltip/loader";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
@@ -132,7 +132,7 @@ Then in ```main.js```
 import Vue from 'vue';
 import App from './App.vue';
 
-import { applyPolyfills, defineCustomElements } from 's-tooltip/loader';
+import { applyPolyfills, defineCustomElements } from '@seanwong24/s-tooltip/loader';
 
 Vue.config.productionTip = false;
 
