@@ -23,7 +23,7 @@
     "publish": "npm run build && npm publish"
   },
   "dependencies": {
-    "@stencil/core": "^2.0.1"
+    "@stencil/core": "^2.1.1"
   },
   "license": "MIT",
   "repository": {
