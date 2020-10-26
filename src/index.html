@@ -209,20 +209,30 @@
   <div>
     <h3>Examples in readme</h3>
     <hr />
-    <h3 style="display: inline-block;">
-      Hover to see the tooltip
-      <s-tooltip orientation="right">This is a tooltip</s-tooltip>
-    </h3>
-    <h3 style="display: inline-block;">
-      Hover to see the tooltip
-      <s-tooltip orientation="right">
-        <div>
-          <h1>h1</h1>
-          <h2>h2</h2>
-          <h3>h3</h3>
-        </div>
-      </s-tooltip>
-    </h3>
+    <div>
+      <h3 style="display: inline-block;">
+        Hover on me
+        <s-tooltip orientation="right">This is a tooltip</s-tooltip>
+      </h3>
+    </div>
+    <div>
+      <h3 style="display: inline-block;">
+        Hover on me
+        <s-tooltip orientation="right">
+          <div>
+            <h1>h1</h1>
+            <h2>h2</h2>
+            <h3>h3</h3>
+          </div>
+        </s-tooltip>
+      </h3>
+    </div>
+    <div>
+      <h3 id="example-item" style="display: inline-block;">
+        Hover on me
+      </h3>
+      <s-tooltip orientation="right" attach-to="#example-item">This is a tooltip attach to sibling element</s-tooltip>
+    </div>
   </div>
 
   <div>

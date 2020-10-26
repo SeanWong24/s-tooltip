@@ -28,6 +28,13 @@ Also, the tooltip content can be html elements.
     </s-tooltip>
 </h3>
 ```
+In some special cases (such as one of ancestor elements of ```s-tooltip``` having ```z-index``` set), you might not want put ```s-tooltip``` inside the attached element. Then you can set ```attach-to``` attribute to manually attach the tooltip to another element.
+```html
+<h3 id="example-item" style="display: inline-block;">
+  Hover on me
+</h3>
+<s-tooltip orientation="right" attach-to="#example-item">This is a tooltip attach to sibling element</s-tooltip>
+```
 ## Want to try it yourself?
 [![Edit s-tooltip-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/s-tooltip-example-66zqc?fontsize=14&hidenavigation=1&theme=dark)
 

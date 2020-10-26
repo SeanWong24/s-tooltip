@@ -18,6 +18,18 @@ export class STooltip {
     }
   }
 
+  private get attachedElement() {
+    if (this.attachTo) {
+      if (typeof this.attachTo === 'string') {
+        return document.querySelector(this.attachTo) as HTMLElement;
+      } else {
+        return this.attachTo;
+      }
+    } else {
+      return this.hostElement.parentElement;
+    }
+  }
+
   @Element() hostElement: HTMLSTooltipElement;
 
   @Prop({ reflect: true }) margin: number = 10;
@@ -25,6 +37,7 @@ export class STooltip {
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) noArrow: boolean = false;
+  @Prop({ reflect: true }) attachTo: string | HTMLElement;
   @Prop({ reflect: true }) backgroundColor: string = 'black';
   @Prop({ reflect: true }) maxWidth: string = '500px';
   @Prop({ reflect: true }) maxHeight: string = '300px';
@@ -56,10 +69,10 @@ export class STooltip {
   }
 
   connectedCallback() {
-    const parentElement = this.hostElement.parentElement;
-    parentElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
-    parentElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
-    parentElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
+    const attachedElement = this.attachedElement;
+    attachedElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
+    attachedElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
+    attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
 
     this.initializeCSSVariables();
   }
@@ -87,8 +100,7 @@ export class STooltip {
       x = mouseEvent.x;
       y = mouseEvent.y;
     } else {
-      const parentElement = this.hostElement.parentElement;
-      const { top, right, bottom, left, width, height } = parentElement.getBoundingClientRect();
+      const { top, right, bottom, left, width, height } = this.attachedElement.getBoundingClientRect();
 
       switch (this.orientation) {
         case 'top':

@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface STooltip {
+        "attachTo": string | HTMLElement;
         "backgroundColor": string;
         "borderColor": string;
         "borderWidth": string;
@@ -34,6 +35,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface STooltip {
+        "attachTo"?: string | HTMLElement;
         "backgroundColor"?: string;
         "borderColor"?: string;
         "borderWidth"?: string;
