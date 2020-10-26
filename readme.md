@@ -6,6 +6,8 @@ An easy-to-use tooltip web component for any framework (Angular, React, Vue, etc
 [Demo](https://seanwong24.github.io/s-tooltip/)
 
 # How to use
+## Properties & attibutes
+[See here](./src/components/s-tooltip/readme.md)
 ## Examples
 After importing, ```s-tooltip``` tag can be placed in any container in html.
 ```html
@@ -161,6 +163,3 @@ new Vue({
 ```sh
 npm i @seanwong24/s-tooltip
 ```
-
-# Properties & attibutes
-[See here](./src/components/s-tooltip/readme.md)
