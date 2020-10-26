@@ -14,7 +14,7 @@ export class STooltip {
   private set isTooltipEnabled(value: boolean) {
     if (value !== this._isTooltipEnabled) {
       this._isTooltipEnabled = value;
-      this.hostElement.style.setProperty('--tooltip-display', value ? 'block' : 'none');
+      this.updateCSSVariable('--tooltip-display', value ? 'block' : 'none');
     }
   }
 
@@ -31,24 +31,28 @@ export class STooltip {
   @Prop({ reflect: true }) borderWidth: string = '0px';
   @Prop({ reflect: true }) borderColor: string = 'white';
   @Prop({ reflect: true }) opacity: number = .8;
+  @Prop({ reflect: true }) zIndex: number = 99999;
 
   @Watch('backgroundColor') updateBackgroundColor(value: string) {
-    this.hostElement.style.setProperty('--tooltip-background-color', value);
+    this.updateCSSVariable('--tooltip-background-color', value);
   }
   @Watch('maxWidth') updateMaxWidth(value: string) {
-    this.hostElement.style.setProperty('--tooltip-max-width', value);
+    this.updateCSSVariable('--tooltip-max-width', value);
   }
   @Watch('maxHeight') updateMaxHeight(value: string) {
-    this.hostElement.style.setProperty('--tooltip-max-height', value);
+    this.updateCSSVariable('--tooltip-max-height', value);
   }
   @Watch('borderWidth') updateBorderWidth(value: string) {
-    this.hostElement.style.setProperty('--tooltip-border-width', value);
+    this.updateCSSVariable('--tooltip-border-width', value);
   }
   @Watch('borderColor') updateBorderColor(value: string) {
-    this.hostElement.style.setProperty('--tooltip-border-color', value);
+    this.updateCSSVariable('--tooltip-border-color', value);
   }
   @Watch('opacity') updateOpacity(value: number) {
-    this.hostElement.style.setProperty('--tooltip-opacity', value.toString());
+    this.updateCSSVariable('--tooltip-opacity', value.toString());
+  }
+  @Watch('zIndex') updateZIndex(value: number) {
+    this.updateCSSVariable('--tooltip-z-index', value.toString());
   }
 
   connectedCallback() {
@@ -57,12 +61,7 @@ export class STooltip {
     parentElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
     parentElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
 
-    this.updateBackgroundColor(this.backgroundColor);
-    this.updateMaxWidth(this.maxWidth);
-    this.updateMaxHeight(this.maxHeight);
-    this.updateBorderWidth(this.borderWidth);
-    this.updateBorderColor(this.borderColor);
-    this.updateOpacity(this.opacity);
+    this.initializeCSSVariables();
   }
 
   render() {
@@ -140,8 +139,22 @@ export class STooltip {
         break;
     }
 
-    this.hostElement.style.setProperty('--tooltip-left', `${tooltipLeft}px`);
-    this.hostElement.style.setProperty('--tooltip-top', `${tooltipTop}px`);
+    this.updateCSSVariable('--tooltip-left', `${tooltipLeft}px`);
+    this.updateCSSVariable('--tooltip-top', `${tooltipTop}px`);
+  }
+
+  private initializeCSSVariables() {
+    this.updateBackgroundColor(this.backgroundColor);
+    this.updateMaxWidth(this.maxWidth);
+    this.updateMaxHeight(this.maxHeight);
+    this.updateBorderWidth(this.borderWidth);
+    this.updateBorderColor(this.borderColor);
+    this.updateOpacity(this.opacity);
+    this.updateZIndex(this.zIndex);
+  }
+
+  private updateCSSVariable(variableName: string, value: string) {
+    this.hostElement.style.setProperty(variableName, value);
   }
 
 }

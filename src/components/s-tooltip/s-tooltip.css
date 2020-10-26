@@ -13,10 +13,11 @@
   --tooltip-max-width: unset;
   --tooltip-max-height: unset;
   --tooltip-opacity: unset;
+  --tooltip-z-index: unset;
 }
 
 #tooltip-container {
-  z-index: 99999;
+  z-index: var(--tooltip-z-index);
   pointer-events: none;
   display: var(--tooltip-display);
   position: fixed;

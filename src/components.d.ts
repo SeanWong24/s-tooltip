@@ -18,6 +18,7 @@ export namespace Components {
         "noDefaultStyle": boolean;
         "opacity": number;
         "orientation": 'top' | 'right' | 'bottom' | 'left';
+        "zIndex": number;
     }
 }
 declare global {
@@ -44,6 +45,7 @@ declare namespace LocalJSX {
         "noDefaultStyle"?: boolean;
         "opacity"?: number;
         "orientation"?: 'top' | 'right' | 'bottom' | 'left';
+        "zIndex"?: number;
     }
     interface IntrinsicElements {
         "s-tooltip": STooltip;

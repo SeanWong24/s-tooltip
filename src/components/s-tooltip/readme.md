@@ -20,6 +20,7 @@
 | `noDefaultStyle`  | `no-default-style` |             | `boolean`                                | `false`    |
 | `opacity`         | `opacity`          |             | `number`                                 | `.8`       |
 | `orientation`     | `orientation`      |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'` |
+| `zIndex`          | `z-index`          |             | `number`                                 | `99999`    |
 
 
 ----------------------------------------------
