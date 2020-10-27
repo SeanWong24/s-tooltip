@@ -13,6 +13,7 @@
 | `backgroundColor` | `background-color` |             | `string`                                 | `'black'`                 |
 | `borderColor`     | `border-color`     |             | `string`                                 | `'white'`                 |
 | `borderWidth`     | `border-width`     |             | `string`                                 | `'0px'`                   |
+| `color`           | `color`            |             | `string`                                 | `'white'`                 |
 | `followMouse`     | `follow-mouse`     |             | `boolean`                                | `false`                   |
 | `margin`          | `margin`           |             | `number`                                 | `10`                      |
 | `maxHeight`       | `max-height`       |             | `string`                                 | `'300px'`                 |

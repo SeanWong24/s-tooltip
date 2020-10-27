@@ -9,6 +9,7 @@
   --tooltip-arrow-left: unset;
   --tooltip-border-width: unset;
   --tooltip-border-color: unset;
+  --tooltip-color: unset;
   --tooltip-background-color: unset;
   --tooltip-max-width: unset;
   --tooltip-max-height: unset;
@@ -31,7 +32,7 @@
   background-color: var(--tooltip-background-color);
   border-radius: 10px;
   padding: 10px;
-  color: white;
+  color: var(--tooltip-color);
   max-width: var(--tooltip-max-width);
   max-height: var(--tooltip-max-height);
   border-style: solid;

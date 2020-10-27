@@ -11,6 +11,7 @@ export namespace Components {
         "backgroundColor": string;
         "borderColor": string;
         "borderWidth": string;
+        "color": string;
         "followMouse": boolean;
         "margin": number;
         "maxHeight": string;
@@ -40,6 +41,7 @@ declare namespace LocalJSX {
         "backgroundColor"?: string;
         "borderColor"?: string;
         "borderWidth"?: string;
+        "color"?: string;
         "followMouse"?: boolean;
         "margin"?: number;
         "maxHeight"?: string;

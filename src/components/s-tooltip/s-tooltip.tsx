@@ -38,6 +38,7 @@ export class STooltip {
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) noArrow: boolean = false;
   @Prop({ reflect: true }) attachTo: string | HTMLElement;
+  @Prop({ reflect: true }) color: string = 'white';
   @Prop({ reflect: true }) backgroundColor: string = 'black';
   @Prop({ reflect: true }) maxWidth: string = '500px';
   @Prop({ reflect: true }) maxHeight: string = '300px';
@@ -47,6 +48,9 @@ export class STooltip {
   @Prop({ reflect: true }) zIndex: number = 99999;
   @Prop({ reflect: true }) shadow: string = '0px 5px 10px 0px grey';
 
+  @Watch('color') updateColor(value: string) {
+    this.updateCSSVariable('--tooltip-color', value);
+  }
   @Watch('backgroundColor') updateBackgroundColor(value: string) {
     this.updateCSSVariable('--tooltip-background-color', value);
   }
@@ -160,6 +164,7 @@ export class STooltip {
   }
 
   private initializeCSSVariables() {
+    this.updateColor(this.color);
     this.updateBackgroundColor(this.backgroundColor);
     this.updateMaxWidth(this.maxWidth);
     this.updateMaxHeight(this.maxHeight);
