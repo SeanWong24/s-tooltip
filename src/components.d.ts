@@ -19,6 +19,7 @@ export namespace Components {
         "noDefaultStyle": boolean;
         "opacity": number;
         "orientation": 'top' | 'right' | 'bottom' | 'left';
+        "shadow": string;
         "zIndex": number;
     }
 }
@@ -47,6 +48,7 @@ declare namespace LocalJSX {
         "noDefaultStyle"?: boolean;
         "opacity"?: number;
         "orientation"?: 'top' | 'right' | 'bottom' | 'left';
+        "shadow"?: string;
         "zIndex"?: number;
     }
     interface IntrinsicElements {

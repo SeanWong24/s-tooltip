@@ -14,6 +14,7 @@
   --tooltip-max-height: unset;
   --tooltip-opacity: unset;
   --tooltip-z-index: unset;
+  --tooltip-shadow: unset;
 }
 
 #tooltip-container {
@@ -36,6 +37,7 @@
   border-style: solid;
   border-width: var(--tooltip-border-width);
   border-color: var(--tooltip-border-color);
+  box-shadow: var(--tooltip-shadow);
 }
 
 
