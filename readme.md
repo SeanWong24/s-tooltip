@@ -5,11 +5,19 @@ An easy-to-use tooltip web component for any framework (Angular, React, Vue, etc
 
 [Demo](https://seanwong24.github.io/s-tooltip/)
 
+# How to install
+## Use NPM
+```sh
+npm i @seanwong24/s-tooltip
+```
+## Use CDN
+```html
+<script type="module" src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.esm.js"></script>
+<script nomodule src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
+```
+
 # How to use
-## Properties & attibutes
-[See here](./src/components/s-tooltip/readme.md)
-## Examples
-After importing, ```s-tooltip``` tag can be placed in any container in html.
+First you need to [import the component to your project](#import), then the easiest way to use the component is to put ```s-tooltip``` tag inside any element that you want to attach in html.
 ```html
 <h3 style="display: inline-block;">
     Hover to see the tooltip
@@ -30,25 +38,23 @@ Also, the tooltip content can be html elements.
     </s-tooltip>
 </h3>
 ```
-In some special cases (such as one of ancestor elements of ```s-tooltip``` having ```z-index``` set), you might not want put ```s-tooltip``` inside the attached element. Then you can set ```attach-to``` attribute to manually attach the tooltip to another element.
+In some special cases (such as the parent element cannot contain inner html content or one of ancestor elements of ```s-tooltip``` having ```z-index``` set), you might want put ```s-tooltip``` somewhere else instead of putting it inside the attached element. Then you can set ```attach-to``` attribute to manually attach the tooltip to another element.
 ```html
 <h3 id="example-item" style="display: inline-block;">
   Hover on me
 </h3>
 <s-tooltip orientation="right" attach-to="#example-item">This is a tooltip attach to sibling element</s-tooltip>
 ```
+## Properties & attributes
+To see the list of available properties and attributes, [check here](./src/components/s-tooltip/readme.md).
 ## Want to try it yourself?
 [![Edit s-tooltip-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/s-tooltip-example-66zqc?fontsize=14&hidenavigation=1&theme=dark)
 
-# How to install
+# How to import
+Basically, you want to call ```defineCustomElements()``` from the loader. If you want, you can optionally call ```applyPolyfills()``` first as well. For different project types, please check below sections for more details.
 ## Pure JS
-### Quick import
-```html
-<script type="module" src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.esm.js"></script>
-<script nomodule src="https://unpkg.com/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
-```
 ### Script tag
-First, [install using NPM](#use-npm-to-get-a-local-copy).  
+First, [install using NPM](#use-npm).  
 Then in the html
 ```html
 <!-- for ES6 -->
@@ -57,7 +63,7 @@ Then in the html
 <script nomodule src="node_modules/@seanwong24/s-tooltip/dist/s-tooltip/s-tooltip.js"></script>
 ```
 ### Import statement
-First, [install using NPM](#use-npm-to-get-a-local-copy).  
+First, [install using NPM](#use-npm).  
 Then in JS file
 ```js
 import { applyPolyfills, defineCustomElements } from "node_modules/@seanwong24/s-tooltip/loader/index.js";
@@ -72,7 +78,7 @@ And in html
 Note that ```type="module"``` only works in modern browsers.
 ## Angular
 ### Use loader
-First [install using NPM](#use-npm-to-get-a-local-copy).  
+First [install using NPM](#use-npm).  
 Then include ```CUSTOM_ELEMENTS_SCHEMA``` in any module that uses ```s-tooltip```. For example, in ```AppModule```
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
@@ -115,7 +121,7 @@ applyPolyfills().then(() => {
 ```
 ## React
 ### Use loader
-First [install using NPM](#use-npm-to-get-a-local-copy).  
+First [install using NPM](#use-npm).  
 Then in ```index.js```
 ```jsx
 import React from 'react';
@@ -137,7 +143,7 @@ applyPolyfills().then(() => {
 ```
 ## Vue
 ### Use loader
-First [install using NPM](#use-npm-to-get-a-local-copy).
+First [install using NPM](#use-npm).
 Then in ```main.js```
 ```js
 import Vue from 'vue';
@@ -158,8 +164,3 @@ applyPolyfills().then(() => {
 new Vue({
   render: h => h(App)
 }).$mount('#app');
-```
-## Use NPM to get a local copy
-```sh
-npm i @seanwong24/s-tooltip
-```
