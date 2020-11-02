@@ -18,15 +18,15 @@ export class STooltip {
     }
   }
 
-  private get attachedElement() {
+  private get attachedElements() {
     if (this.attachTo) {
       if (typeof this.attachTo === 'string') {
-        return document.querySelector(this.attachTo) as HTMLElement;
+        return document.querySelectorAll(this.attachTo) as NodeListOf<HTMLElement>;
       } else {
         return this.attachTo;
       }
     } else {
-      return this.hostElement.parentElement;
+      return [this.hostElement.parentElement];
     }
   }
 
@@ -37,7 +37,7 @@ export class STooltip {
   @Prop({ reflect: true }) followMouse: boolean = false;
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) noArrow: boolean = false;
-  @Prop({ reflect: true }) attachTo: string | HTMLElement;
+  @Prop({ reflect: true }) attachTo: string | HTMLElement[];
   @Prop({ reflect: true }) color: string = 'white';
   @Prop({ reflect: true }) backgroundColor: string = 'black';
   @Prop({ reflect: true }) maxWidth: string = '500px';
@@ -77,10 +77,11 @@ export class STooltip {
   }
 
   connectedCallback() {
-    const attachedElement = this.attachedElement;
-    attachedElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
-    attachedElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
-    attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
+    this.attachedElements.forEach(attachedElement => {
+      attachedElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
+      attachedElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
+      attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
+    });
 
     this.initializeCSSVariables();
   }
@@ -108,7 +109,7 @@ export class STooltip {
       x = mouseEvent.x;
       y = mouseEvent.y;
     } else {
-      const { top, right, bottom, left, width, height } = this.attachedElement.getBoundingClientRect();
+      const { top, right, bottom, left, width, height } = (mouseEvent.target as HTMLElement).getBoundingClientRect();
 
       switch (this.orientation) {
         case 'top':

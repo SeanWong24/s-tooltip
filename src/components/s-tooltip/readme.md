@@ -9,7 +9,7 @@
 
 | Property          | Attribute          | Description | Type                                     | Default                   |
 | ----------------- | ------------------ | ----------- | ---------------------------------------- | ------------------------- |
-| `attachTo`        | `attach-to`        |             | `HTMLElement \| string`                  | `undefined`               |
+| `attachTo`        | `attach-to`        |             | `HTMLElement[] \| string`                | `undefined`               |
 | `backgroundColor` | `background-color` |             | `string`                                 | `'black'`                 |
 | `borderColor`     | `border-color`     |             | `string`                                 | `'white'`                 |
 | `borderWidth`     | `border-width`     |             | `string`                                 | `'0px'`                   |
