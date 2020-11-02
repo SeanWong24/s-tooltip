@@ -32,9 +32,9 @@ Also, the tooltip content can be html elements.
     <s-tooltip orientation="top">
       <div>
         <h1>h1</h1>
-          <h2>h2</h2>
-          <h3>h3</h3>
-        </div>
+        <h2>h2</h2>
+        <h3>h3</h3>
+      </div>
     </s-tooltip>
 </h3>
 ```
@@ -45,6 +45,17 @@ In some special cases (such as the parent element cannot contain inner html cont
 </h3>
 <s-tooltip orientation="right" attach-to="#example-item">This is a tooltip attach to sibling element</s-tooltip>
 ```
+Optionally, you can add ```data-s-tooltip-text``` attribute to the attached elements to replace the content inside ```s-tooltip```.
+```html
+<button class="example-item" style="display: inline-block;">
+  Hover on me
+</button>
+<button class="example-item" style="display: inline-block;"
+  data-s-tooltip-text="The tooltip text of this element is replaced.">
+  Hover on me
+</button>
+<s-tooltip orientation="right" attach-to=".example-item">This is a tooltip attach to sibling element</s-tooltip>
+``` 
 ## Properties & attributes
 To see the list of available properties and attributes, [check here](./src/components/s-tooltip/readme.md).
 ## Want to try it yourself?

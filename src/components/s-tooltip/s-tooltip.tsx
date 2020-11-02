@@ -15,6 +15,10 @@ export class STooltip {
     if (value !== this._isTooltipEnabled) {
       this._isTooltipEnabled = value;
       this.updateCSSVariable('--tooltip-display', value ? 'block' : 'none');
+
+      if (!value) {
+        this.hostElement.shadowRoot.querySelector('#tooltip-container').innerHTML = '<slot/>';
+      }
     }
   }
 
@@ -109,7 +113,12 @@ export class STooltip {
       x = mouseEvent.x;
       y = mouseEvent.y;
     } else {
-      const { top, right, bottom, left, width, height } = (mouseEvent.target as HTMLElement).getBoundingClientRect();
+      const targetElement = mouseEvent.target as HTMLElement;
+      const tooltipText = targetElement.getAttribute('data-s-tooltip-text');
+      if (tooltipText) {
+        this.hostElement.shadowRoot.querySelector('#tooltip-container').innerHTML = tooltipText;
+      }
+      const { top, right, bottom, left, width, height } = targetElement.getBoundingClientRect();
 
       switch (this.orientation) {
         case 'top':
