@@ -12,6 +12,7 @@
 | `attachTo`        | `attach-to`        |             | `HTMLElement[] \| string`                | `undefined`               |
 | `backgroundColor` | `background-color` |             | `string`                                 | `'black'`                 |
 | `borderColor`     | `border-color`     |             | `string`                                 | `'white'`                 |
+| `borderRadius`    | `border-radius`    |             | `string`                                 | `'10px'`                  |
 | `borderWidth`     | `border-width`     |             | `string`                                 | `'0px'`                   |
 | `color`           | `color`            |             | `string`                                 | `'white'`                 |
 | `followMouse`     | `follow-mouse`     |             | `boolean`                                | `false`                   |

@@ -16,6 +16,7 @@
   --tooltip-opacity: unset;
   --tooltip-z-index: unset;
   --tooltip-shadow: unset;
+  --tooltip-border-radius: unset;
 }
 
 #tooltip-container {
@@ -30,7 +31,7 @@
 
 #tooltip-container.styled {
   background-color: var(--tooltip-background-color);
-  border-radius: 10px;
+  border-radius: var(--tooltip-border-radius);
   padding: 10px;
   color: var(--tooltip-color);
   max-width: var(--tooltip-max-width);

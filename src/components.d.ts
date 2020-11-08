@@ -10,6 +10,7 @@ export namespace Components {
         "attachTo": string | HTMLElement[];
         "backgroundColor": string;
         "borderColor": string;
+        "borderRadius": string;
         "borderWidth": string;
         "color": string;
         "followMouse": boolean;
@@ -40,6 +41,7 @@ declare namespace LocalJSX {
         "attachTo"?: string | HTMLElement[];
         "backgroundColor"?: string;
         "borderColor"?: string;
+        "borderRadius"?: string;
         "borderWidth"?: string;
         "color"?: string;
         "followMouse"?: boolean;

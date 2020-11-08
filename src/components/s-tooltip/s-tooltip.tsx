@@ -51,6 +51,7 @@ export class STooltip {
   @Prop({ reflect: true }) opacity: number = .9;
   @Prop({ reflect: true }) zIndex: number = 99999;
   @Prop({ reflect: true }) shadow: string = '0px 5px 10px 0px grey';
+  @Prop({ reflect: true }) borderRadius: string = '10px';
 
   @Watch('color') updateColor(value: string) {
     this.updateCSSVariable('--tooltip-color', value);
@@ -78,6 +79,9 @@ export class STooltip {
   }
   @Watch('shadow') updateShadow(value: string) {
     this.updateCSSVariable('--tooltip-shadow', value);
+  }
+  @Watch('borderRadius') updateBorderRadius(value: string) {
+    this.updateCSSVariable('--tooltip-border-radius', value);
   }
 
   connectedCallback() {
@@ -183,6 +187,7 @@ export class STooltip {
     this.updateOpacity(this.opacity);
     this.updateZIndex(this.zIndex);
     this.updateShadow(this.shadow);
+    this.updateBorderRadius(this.borderRadius);
   }
 
   private updateCSSVariable(variableName: string, value: string) {
