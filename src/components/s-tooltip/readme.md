@@ -9,6 +9,7 @@
 
 | Property          | Attribute          | Description | Type                                     | Default                   |
 | ----------------- | ------------------ | ----------- | ---------------------------------------- | ------------------------- |
+| `arrowSize`       | `arrow-size`       |             | `string`                                 | `'10px'`                  |
 | `attachTo`        | `attach-to`        |             | `HTMLElement[] \| string`                | `undefined`               |
 | `backgroundColor` | `background-color` |             | `string`                                 | `'black'`                 |
 | `borderColor`     | `border-color`     |             | `string`                                 | `'white'`                 |

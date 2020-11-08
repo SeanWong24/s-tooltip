@@ -17,6 +17,7 @@
   --tooltip-z-index: unset;
   --tooltip-shadow: unset;
   --tooltip-border-radius: unset;
+  --tooltip-arrow-size: unset;
 }
 
 #tooltip-container {
@@ -54,121 +55,121 @@
 }
 
 #tooltip-container.styled.arrow.top:before {
-  border-left-width: 10px;
+  border-left-width: var(--tooltip-arrow-size);
   border-left-color: transparent;
-  border-right-width: 10px;
+  border-right-width: var(--tooltip-arrow-size);
   border-right-color: transparent;
-  border-bottom-width: 10px;
+  border-bottom-width: var(--tooltip-arrow-size);
   border-bottom-color: transparent;
   top: 100%;
   left: 50%;
-  margin-left: -10px;
+  margin-left: calc(0px - var(--tooltip-arrow-size));
   
-  border-top-width: calc(10px - var(--tooltip-border-width));
+  border-top-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-top-color: var(--tooltip-border-color);
 }
 
 #tooltip-container.styled.arrow.top:after {
-  border-left-width: calc(10px - var(--tooltip-border-width));
+  border-left-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-left-color: transparent;
-  border-right-width: calc(10px - var(--tooltip-border-width));
+  border-right-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-right-color: transparent;
-  border-bottom-width: calc(10px - var(--tooltip-border-width));
+  border-bottom-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-bottom-color: transparent;
   top: 100%;
   left: 50%;
-  margin-left: calc(-10px + var(--tooltip-border-width));
+  margin-left: calc(0px - var(--tooltip-arrow-size) + var(--tooltip-border-width));
   
   border-top-color: var(--tooltip-background-color);
-  border-top-width: calc(10px - var(--tooltip-border-width) * 2);
+  border-top-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width) * 2);
 }
 
 #tooltip-container.styled.arrow.bottom:before {
-  border-left-width: 10px;
+  border-left-width: var(--tooltip-arrow-size);
   border-left-color: transparent;
-  border-right-width: 10px;
+  border-right-width: var(--tooltip-arrow-size);
   border-right-color: transparent;
-  border-top-width: 10px;
+  border-top-width: var(--tooltip-arrow-size);
   border-top-color: transparent;
   bottom: 100%;
   left: 50%;
-  margin-left: -10px;
+  margin-left: calc(0px - var(--tooltip-arrow-size));
   
-  border-bottom-width: calc(10px - var(--tooltip-border-width));
+  border-bottom-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-bottom-color: var(--tooltip-border-color);
 }
 
 #tooltip-container.styled.arrow.bottom:after {
-  border-left-width: calc(10px - var(--tooltip-border-width));
+  border-left-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-left-color: transparent;
-  border-right-width: calc(10px - var(--tooltip-border-width));
+  border-right-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-right-color: transparent;
-  border-top-width: calc(10px - var(--tooltip-border-width));
+  border-top-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-top-color: transparent;
   bottom: 100%;
   left: 50%;
-  margin-left: calc(-10px + var(--tooltip-border-width));
+  margin-left: calc(0px - var(--tooltip-arrow-size) + var(--tooltip-border-width));
 
   border-bottom-color: var(--tooltip-background-color);
-  border-bottom-width: calc(10px - var(--tooltip-border-width) * 2);
+  border-bottom-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width) * 2);
 }
 
 #tooltip-container.styled.arrow.left:before {
-  border-top-width: 10px;
+  border-top-width: var(--tooltip-arrow-size);
   border-top-color: transparent;
-  border-bottom-width: 10px;
+  border-bottom-width: var(--tooltip-arrow-size);
   border-bottom-color: transparent;
-  border-right-width: 10px;
+  border-right-width: var(--tooltip-arrow-size);
   border-right-color: transparent;
   left: 100%;
   top: 50%;
-  margin-top: -10px;
+  margin-top: calc(0px - var(--tooltip-arrow-size));
   
-  border-left-width: calc(10px - var(--tooltip-border-width));
+  border-left-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-left-color: var(--tooltip-border-color);
 }
 
 #tooltip-container.styled.arrow.left:after {
-  border-top-width: calc(10px - var(--tooltip-border-width));
+  border-top-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-top-color: transparent;
-  border-bottom-width: calc(10px - var(--tooltip-border-width));
+  border-bottom-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-bottom-color: transparent;
-  border-right-width: calc(10px - var(--tooltip-border-width));
+  border-right-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-right-color: transparent;
   left: 100%;
   top: 50%;
-  margin-top: calc(-10px + var(--tooltip-border-width));
+  margin-top: calc(0px - var(--tooltip-arrow-size) + var(--tooltip-border-width));
 
   border-left-color: var(--tooltip-background-color);
-  border-left-width: calc(10px - var(--tooltip-border-width) * 2);
+  border-left-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width) * 2);
 }
 
 #tooltip-container.styled.arrow.right:before {
-  border-top-width: 10px;
+  border-top-width: var(--tooltip-arrow-size);
   border-top-color: transparent;
-  border-bottom-width: 10px;
+  border-bottom-width: var(--tooltip-arrow-size);
   border-bottom-color: transparent;
-  border-left-width: 10px;
+  border-left-width: var(--tooltip-arrow-size);
   border-left-color: transparent;
   right: 100%;
   top: 50%;
-  margin-top: -10px;
+  margin-top: calc(0px - var(--tooltip-arrow-size));
   
-  border-right-width: calc(10px - var(--tooltip-border-width));
+  border-right-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-right-color: var(--tooltip-border-color);
 }
 
 #tooltip-container.styled.arrow.right:after {
-  border-top-width: calc(10px - var(--tooltip-border-width));
+  border-top-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-top-color: transparent;
-  border-bottom-width: calc(10px - var(--tooltip-border-width));
+  border-bottom-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-bottom-color: transparent;
-  border-left-width: calc(10px - var(--tooltip-border-width));
+  border-left-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width));
   border-left-color: transparent;
   right: 100%;
   top: 50%;
-  margin-top: calc(-10px + var(--tooltip-border-width));
+  margin-top: calc(0px - var(--tooltip-arrow-size) + var(--tooltip-border-width));
 
   border-right-color: var(--tooltip-background-color);
-  border-right-width: calc(10px - var(--tooltip-border-width) * 2);
+  border-right-width: calc(var(--tooltip-arrow-size) - var(--tooltip-border-width) * 2);
 }
