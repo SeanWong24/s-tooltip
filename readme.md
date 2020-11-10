@@ -17,7 +17,7 @@ npm i @seanwong24/s-tooltip
 ```
 
 # How to use
-First you need to [import the component to your project](#import), then the easiest way to use the component is to put ```s-tooltip``` tag inside any element that you want to attach in html.
+First you need to [import the component to your project](#how-to-import), then the easiest way to use the component is to put ```s-tooltip``` tag inside any element that you want to attach in html.
 ```html
 <h3 style="display: inline-block;">
     Hover to see the tooltip
