@@ -15,6 +15,7 @@ export namespace Components {
         "borderWidth": string;
         "color": string;
         "followMouse": boolean;
+        "hideDelay": number;
         "margin": number;
         "maxHeight": string;
         "maxWidth": string;
@@ -23,6 +24,7 @@ export namespace Components {
         "opacity": number;
         "orientation": 'top' | 'right' | 'bottom' | 'left';
         "shadow": string;
+        "showDelay": number;
         "zIndex": number;
     }
 }
@@ -47,6 +49,7 @@ declare namespace LocalJSX {
         "borderWidth"?: string;
         "color"?: string;
         "followMouse"?: boolean;
+        "hideDelay"?: number;
         "margin"?: number;
         "maxHeight"?: string;
         "maxWidth"?: string;
@@ -55,6 +58,7 @@ declare namespace LocalJSX {
         "opacity"?: number;
         "orientation"?: 'top' | 'right' | 'bottom' | 'left';
         "shadow"?: string;
+        "showDelay"?: number;
         "zIndex"?: number;
     }
     interface IntrinsicElements {

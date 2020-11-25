@@ -17,6 +17,7 @@
 | `borderWidth`     | `border-width`     |             | `string`                                 | `'0px'`                   |
 | `color`           | `color`            |             | `string`                                 | `'white'`                 |
 | `followMouse`     | `follow-mouse`     |             | `boolean`                                | `false`                   |
+| `hideDelay`       | `hide-delay`       |             | `number`                                 | `100`                     |
 | `margin`          | `margin`           |             | `number`                                 | `10`                      |
 | `maxHeight`       | `max-height`       |             | `string`                                 | `'300px'`                 |
 | `maxWidth`        | `max-width`        |             | `string`                                 | `'500px'`                 |
@@ -25,6 +26,7 @@
 | `opacity`         | `opacity`          |             | `number`                                 | `.8`                      |
 | `orientation`     | `orientation`      |             | `"bottom" \| "left" \| "right" \| "top"` | `'bottom'`                |
 | `shadow`          | `shadow`           |             | `string`                                 | `'0px 5px 10px 0px grey'` |
+| `showDelay`       | `show-delay`       |             | `number`                                 | `100`                     |
 | `zIndex`          | `z-index`          |             | `number`                                 | `99999`                   |
 
 

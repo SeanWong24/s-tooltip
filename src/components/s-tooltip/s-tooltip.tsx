@@ -42,6 +42,8 @@ export class STooltip {
   @Prop({ reflect: true }) noDefaultStyle: boolean = false;
   @Prop({ reflect: true }) noArrow: boolean = false;
   @Prop({ reflect: true }) attachTo: string | HTMLElement[];
+  @Prop({ reflect: true }) showDelay: number = 100;
+  @Prop({ reflect: true }) hideDelay: number = 100;
   @Prop({ reflect: true }) color: string = 'white';
   @Prop({ reflect: true }) backgroundColor: string = 'black';
   @Prop({ reflect: true }) maxWidth: string = '500px';
@@ -90,8 +92,11 @@ export class STooltip {
 
   connectedCallback() {
     this.attachedElements.forEach(attachedElement => {
-      attachedElement.addEventListener('mouseover', () => this.isTooltipEnabled = true);
-      attachedElement.addEventListener('mouseout', () => this.isTooltipEnabled = false);
+      attachedElement.addEventListener('mouseover', event => setTimeout(() => {
+        this.isTooltipEnabled = true;
+        this.updateTooltipPosition(event);
+      }, this.showDelay));
+      attachedElement.addEventListener('mouseout', () => setTimeout(() => this.isTooltipEnabled = false, this.hideDelay));
       attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
     });
 
