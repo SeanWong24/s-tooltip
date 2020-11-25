@@ -1,6 +1,6 @@
 :host {
   all: initial;
-  display: inline-block;
+  display: inline;
   --tooltip-display: none;
   --tooltip-left: 0;
   --tooltip-top: 0;
