@@ -48,7 +48,7 @@ export class STooltip {
   @Prop({ reflect: true }) maxHeight: string = '300px';
   @Prop({ reflect: true }) borderWidth: string = '0px';
   @Prop({ reflect: true }) borderColor: string = 'white';
-  @Prop({ reflect: true }) opacity: number = .9;
+  @Prop({ reflect: true }) opacity: number = .8;
   @Prop({ reflect: true }) zIndex: number = 99999;
   @Prop({ reflect: true }) shadow: string = '0px 5px 10px 0px grey';
   @Prop({ reflect: true }) borderRadius: string = '10px';
