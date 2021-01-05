@@ -93,8 +93,10 @@ export class STooltip {
   connectedCallback() {
     this.attachedElements.forEach(attachedElement => {
       attachedElement.addEventListener('mouseover', event => setTimeout(() => {
-        this.isTooltipEnabled = true;
-        this.updateTooltipPosition(event);
+        if (event.target.matches(':hover')) {
+          this.isTooltipEnabled = true;
+          this.updateTooltipPosition(event);
+        }
       }, this.showDelay));
       attachedElement.addEventListener('mouseout', () => setTimeout(() => this.isTooltipEnabled = false, this.hideDelay));
       attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
