@@ -7,6 +7,8 @@ import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 })
 export class STooltip {
 
+  private shouldShowTooltip: boolean = false;
+
   private _isTooltipEnabled = false;
   private get isTooltipEnabled() {
     return this._isTooltipEnabled;
@@ -92,14 +94,26 @@ export class STooltip {
 
   connectedCallback() {
     this.attachedElements.forEach(attachedElement => {
-      attachedElement.addEventListener('mouseover', event => setTimeout(() => {
-        if (event.target.matches(':hover')) {
-          this.isTooltipEnabled = true;
-          this.updateTooltipPosition(event);
-        }
-      }, this.showDelay));
-      attachedElement.addEventListener('mouseout', () => setTimeout(() => this.isTooltipEnabled = false, this.hideDelay));
-      attachedElement.addEventListener('mousemove', event => this.updateTooltipPosition(event));
+      attachedElement.addEventListener('mouseover', event => {
+        this.shouldShowTooltip = true;
+        setTimeout(() => {
+          if (event.target.matches(':hover')) {
+            this.isTooltipEnabled = true;
+            this.updateTooltipPosition(event);
+          }
+        }, this.showDelay)
+      });
+      attachedElement.addEventListener('mouseout', () => {
+        this.shouldShowTooltip = false;
+        setTimeout(() => {
+          if (!this.shouldShowTooltip) {
+            this.isTooltipEnabled = false;
+          }
+        }, this.hideDelay);
+      });
+      attachedElement.addEventListener('mousemove', event => {
+        this.updateTooltipPosition(event);
+      });
     });
 
     this.initializeCSSVariables();
