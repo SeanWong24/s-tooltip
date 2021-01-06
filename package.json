@@ -1,6 +1,6 @@
 {
   "name": "@seanwong24/s-tooltip",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An easy-to-use tooltip web component for any framework (Angular, React, Vue, etc.) or pure JS.",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
