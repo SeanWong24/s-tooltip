@@ -134,8 +134,10 @@ export class STooltip {
             this.noDefaultStyle ? '' : 'styled',
             this.noArrow ? '' : 'arrow'
           ].join(' ')}
-          innerHTML={this.tooltipText || undefined}
         >
+          {
+            this.tooltipText && <div innerHTML={this.tooltipText}></div>
+          }
           {
             !this.tooltipText && <slot></slot>
           }
