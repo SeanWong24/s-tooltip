@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Prop, Watch, State } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 's-tooltip',
@@ -58,8 +58,6 @@ export class STooltip {
   @Prop({ reflect: true }) borderRadius: string = '10px';
   @Prop({ reflect: true }) arrowSize: string = '10px';
 
-  @State() tooltipText: string;
-
   @Watch('color') updateColor(value: string) {
     this.updateCSSVariable('--tooltip-color', value);
   }
@@ -101,7 +99,8 @@ export class STooltip {
         setTimeout(() => {
           if (event.target.matches(':hover')) {
             this.isTooltipEnabled = true;
-            this.tooltipText = event.target.getAttribute('data-s-tooltip-text');
+            const tooltipText = event.target.getAttribute('data-s-tooltip-text');
+            this.updateTooltipText(tooltipText);
             this.updateTooltipPosition(event);
           }
         }, this.showDelay)
@@ -116,7 +115,8 @@ export class STooltip {
       });
       attachedElement.addEventListener('mousemove', event => {
         if (this.shouldShowTooltip) {
-          this.tooltipText = event.target.getAttribute('data-s-tooltip-text');
+          const tooltipText = event.target.getAttribute('data-s-tooltip-text');
+          this.updateTooltipText(tooltipText);
           this.updateTooltipPosition(event);
         }
       });
@@ -136,15 +136,16 @@ export class STooltip {
             this.noArrow ? '' : 'arrow'
           ].join(' ')}
         >
-          {
-            this.tooltipText && <div innerHTML={this.tooltipText}></div>
-          }
-          {
-            !this.tooltipText && <slot></slot>
-          }
+          <slot></slot>
         </div>
       </Host>
     );
+  }
+
+  private updateTooltipText(text: string) {
+    if (text) {
+      this.hostElement.shadowRoot.querySelector('#tooltip-container').innerHTML = text;
+    }
   }
 
   private updateTooltipPosition(mouseEvent: MouseEvent) {
