@@ -101,6 +101,7 @@ export class STooltip {
         setTimeout(() => {
           if (event.target.matches(':hover')) {
             this.isTooltipEnabled = true;
+            this.tooltipText = event.target.getAttribute('data-s-tooltip-text');
             this.updateTooltipPosition(event);
           }
         }, this.showDelay)
@@ -145,9 +146,7 @@ export class STooltip {
 
   private updateTooltipPosition(mouseEvent: MouseEvent) {
     let x = 0, y = 0;
-
     const targetElement = mouseEvent.target as HTMLElement;
-    this.tooltipText = targetElement.getAttribute('data-s-tooltip-text');;
 
     if (this.followMouse) {
       x = mouseEvent.x;
