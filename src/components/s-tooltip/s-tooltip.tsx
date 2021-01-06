@@ -116,6 +116,7 @@ export class STooltip {
       });
       attachedElement.addEventListener('mousemove', event => {
         if (this.shouldShowTooltip) {
+          this.tooltipText = event.target.getAttribute('data-s-tooltip-text');
           this.updateTooltipPosition(event);
         }
       });
