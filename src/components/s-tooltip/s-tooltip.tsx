@@ -92,7 +92,7 @@ export class STooltip {
     this.updateCSSVariable('--tooltip-arrow-size', value);
   }
 
-  componentDidRender() {
+  connectedCallback() {
     this.attachedElements.forEach(attachedElement => {
       attachedElement.addEventListener('mouseover', event => {
         this.shouldShowTooltip = true;
