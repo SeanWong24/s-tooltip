@@ -1,13 +1,14 @@
-import { Component, Host, h, Element, Prop, Watch } from '@stencil/core';
+import { Component, Host, h, Element, Prop, Watch, ComponentInterface, Method } from '@stencil/core';
 
 @Component({
   tag: 's-tooltip',
   styleUrl: 's-tooltip.css',
   shadow: true,
 })
-export class STooltip {
+export class STooltip implements ComponentInterface {
 
   private shouldShowTooltip: boolean = false;
+  private attachedElements: HTMLElement[] | NodeListOf<HTMLElement> = [];
 
   private _isTooltipEnabled = false;
   private get isTooltipEnabled() {
@@ -24,17 +25,34 @@ export class STooltip {
     }
   }
 
-  private get attachedElements() {
-    if (this.attachTo) {
-      if (typeof this.attachTo === 'string') {
-        return document.querySelectorAll(this.attachTo) as NodeListOf<HTMLElement>;
-      } else {
-        return this.attachTo;
+  private readonly mouseoverHandler = event => {
+    this.shouldShowTooltip = true;
+    setTimeout(() => {
+      if (event.target.matches(':hover')) {
+        this.isTooltipEnabled = true;
+        const tooltipText = event.target.getAttribute('data-s-tooltip-text');
+        this.updateTooltipText(tooltipText);
+        this.updateTooltipPosition(event);
       }
-    } else {
-      return [this.hostElement.parentElement];
+    }, this.showDelay);
+  };
+
+  private readonly mouseoutHandler = () => {
+    this.shouldShowTooltip = false;
+    setTimeout(() => {
+      if (!this.shouldShowTooltip) {
+        this.isTooltipEnabled = false;
+      }
+    }, this.hideDelay);
+  };
+
+  private readonly mousemoveHandler = event => {
+    if (this.shouldShowTooltip) {
+      const tooltipText = event.target.getAttribute('data-s-tooltip-text');
+      this.updateTooltipText(tooltipText);
+      this.updateTooltipPosition(event);
     }
-  }
+  };
 
   @Element() hostElement: HTMLSTooltipElement;
 
@@ -58,71 +76,72 @@ export class STooltip {
   @Prop({ reflect: true }) borderRadius: string = '10px';
   @Prop({ reflect: true }) arrowSize: string = '10px';
 
-  @Watch('color') updateColor(value: string) {
+  @Watch('color')
+  updateColor(value: string) {
     this.updateCSSVariable('--tooltip-color', value);
   }
-  @Watch('backgroundColor') updateBackgroundColor(value: string) {
+
+  @Watch('backgroundColor')
+  updateBackgroundColor(value: string) {
     this.updateCSSVariable('--tooltip-background-color', value);
   }
-  @Watch('maxWidth') updateMaxWidth(value: string) {
+
+  @Watch('maxWidth')
+  updateMaxWidth(value: string) {
     this.updateCSSVariable('--tooltip-max-width', value);
   }
-  @Watch('maxHeight') updateMaxHeight(value: string) {
+
+  @Watch('maxHeight')
+  updateMaxHeight(value: string) {
     this.updateCSSVariable('--tooltip-max-height', value);
   }
-  @Watch('borderWidth') updateBorderWidth(value: string) {
+
+  @Watch('borderWidth')
+  updateBorderWidth(value: string) {
     this.updateCSSVariable('--tooltip-border-width', value);
   }
-  @Watch('borderColor') updateBorderColor(value: string) {
+
+  @Watch('borderColor')
+  updateBorderColor(value: string) {
     this.updateCSSVariable('--tooltip-border-color', value);
   }
-  @Watch('opacity') updateOpacity(value: number) {
+
+  @Watch('opacity')
+  updateOpacity(value: number) {
     this.updateCSSVariable('--tooltip-opacity', value.toString());
   }
-  @Watch('zIndex') updateZIndex(value: number) {
+
+  @Watch('zIndex')
+  updateZIndex(value: number) {
     this.updateCSSVariable('--tooltip-z-index', value.toString());
   }
-  @Watch('shadow') updateShadow(value: string) {
+
+  @Watch('shadow')
+  updateShadow(value: string) {
     this.updateCSSVariable('--tooltip-shadow', value);
   }
-  @Watch('borderRadius') updateBorderRadius(value: string) {
+
+  @Watch('borderRadius')
+  updateBorderRadius(value: string) {
     this.updateCSSVariable('--tooltip-border-radius', value);
   }
-  @Watch('arrowSize') updateArrowSize(value: string) {
+
+  @Watch('arrowSize')
+  updateArrowSize(value: string) {
     this.updateCSSVariable('--tooltip-arrow-size', value);
   }
 
   connectedCallback() {
-    this.attachedElements.forEach(attachedElement => {
-      attachedElement.addEventListener('mouseover', event => {
-        this.shouldShowTooltip = true;
-        setTimeout(() => {
-          if (event.target.matches(':hover')) {
-            this.isTooltipEnabled = true;
-            const tooltipText = event.target.getAttribute('data-s-tooltip-text');
-            this.updateTooltipText(tooltipText);
-            this.updateTooltipPosition(event);
-          }
-        }, this.showDelay)
-      });
-      attachedElement.addEventListener('mouseout', () => {
-        this.shouldShowTooltip = false;
-        setTimeout(() => {
-          if (!this.shouldShowTooltip) {
-            this.isTooltipEnabled = false;
-          }
-        }, this.hideDelay);
-      });
-      attachedElement.addEventListener('mousemove', event => {
-        if (this.shouldShowTooltip) {
-          const tooltipText = event.target.getAttribute('data-s-tooltip-text');
-          this.updateTooltipText(tooltipText);
-          this.updateTooltipPosition(event);
-        }
-      });
-    });
-
     this.initializeCSSVariables();
+  }
+
+  componentWillRender() {
+    this.setEventsForAttachedElements();
+  }
+
+  @Method()
+  async forceUpdateAttachedElements() {
+    this.setEventsForAttachedElements();
   }
 
   render() {
@@ -208,6 +227,32 @@ export class STooltip {
 
     this.updateCSSVariable('--tooltip-left', `${tooltipLeft}px`);
     this.updateCSSVariable('--tooltip-top', `${tooltipTop}px`);
+  }
+
+  private setEventsForAttachedElements() {
+    this.attachedElements.forEach(attachedElement => {
+      attachedElement?.removeEventListener('mouseover', this.mouseoverHandler);
+      attachedElement?.removeEventListener('mouseout', this.mouseoutHandler);
+      attachedElement?.removeEventListener('mousemove', this.mousemoveHandler);
+    });
+    this.updateAttachedElements();
+    this.attachedElements.forEach(attachedElement => {
+      attachedElement.addEventListener('mouseover', this.mouseoverHandler);
+      attachedElement.addEventListener('mouseout', this.mouseoutHandler);
+      attachedElement.addEventListener('mousemove', this.mousemoveHandler);
+    });
+  }
+
+  private updateAttachedElements() {
+    if (this.attachTo) {
+      if (typeof this.attachTo === 'string') {
+        this.attachedElements = document.querySelectorAll(this.attachTo) as NodeListOf<HTMLElement>;
+      } else {
+        this.attachedElements = this.attachTo;
+      }
+    } else {
+      this.attachedElements = [this.hostElement.parentElement];
+    }
   }
 
   private initializeCSSVariables() {

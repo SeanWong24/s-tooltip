@@ -30,6 +30,19 @@
 | `zIndex`          | `z-index`          |             | `number`                                 | `99999`                   |
 
 
+## Methods
+
+### `forceUpdateAttachedElements() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

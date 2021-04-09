@@ -15,6 +15,7 @@ export namespace Components {
         "borderWidth": string;
         "color": string;
         "followMouse": boolean;
+        "forceUpdateAttachedElements": () => Promise<void>;
         "hideDelay": number;
         "margin": number;
         "maxHeight": string;
